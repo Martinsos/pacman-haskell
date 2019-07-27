@@ -6,6 +6,7 @@ import Control.Exception (evaluate)
 
 import Board
 
+
 spec_Board :: Spec
 spec_Board = do
     let fields = [ [Food, Wall]
