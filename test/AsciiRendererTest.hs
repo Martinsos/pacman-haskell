@@ -2,15 +2,17 @@ module AsciiRendererTest where
 
 import Test.Tasty.Hspec
 
-import Board (Board(..))
-import AsciiRenderer (renderBoard)
+import Board (Field(..), fromList)
+import AsciiRenderer (renderBoard, renderField)
 
 
 spec_renderBoard :: Spec
 spec_renderBoard = do
-    it "correctly renders 2x2 board" $ do
-        let board = Board { width = 2, height = 2 }
-        (renderBoard board) `shouldBe` "..\n.."
-    it "correctly renders 3x3 board" $ do
-        let board = Board { width = 3, height = 3 }
-        (renderBoard board) `shouldBe` "...\n...\n..."
+    it "correctly renders small board" $ do
+        let board = fromList [[Food, Wall], [Empty, Wall], [Wall, Wall]]
+        (renderBoard board) `shouldBe` ".#\n #\n##"
+
+spec_renderField :: Spec
+spec_renderField = do
+    it "Renders different types of fields correctly" $ do
+        map renderField [Food, Wall, Empty] `shouldBe` ".# "

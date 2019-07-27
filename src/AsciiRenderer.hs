@@ -1,15 +1,21 @@
 module AsciiRenderer
     ( renderBoard
+    -- For tests only:
+    , renderField
     ) where
 
 import Data.List (intercalate)
 
-import Board (Board(..))
+import Board (Board, Field(..), toList)
 
 
 renderBoard :: Board -> String
-renderBoard board = asciiBoard
-    where
-      asciiBoard = intercalate "\n" $ replicate (height board) asciiRow
-      asciiRow = replicate (width board) asciiFood
-      asciiFood = '.'
+renderBoard board = intercalate "\n" $ map renderRow rows
+  where
+    rows = toList (board)
+    renderRow = map renderField
+
+renderField :: Field -> Char
+renderField Food = '.'
+renderField Wall = '#'
+renderField Empty = ' '
