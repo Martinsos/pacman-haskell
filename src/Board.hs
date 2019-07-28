@@ -20,6 +20,8 @@ getWidth board = length $ (getRows board) !! 0
 getHeight :: Board -> Int
 getHeight board = length $ getRows board
 
+-- TODO: add method that constructs board from string, from ascii characters, so it is easier to construct it (more readable).
+
 fromList :: [[Field]] -> Board
 fromList rows
     | not areRowsValid = error "Rows are invalid!"
