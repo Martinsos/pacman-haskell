@@ -22,9 +22,8 @@ getHeight board = length $ getRows board
 
 fromList :: [[Field]] -> Board
 fromList rows
-    = if (not areRowsValid)
-      then error "Rows are invalid!"
-      else Board { getRows = rows }
+    | not areRowsValid = error "Rows are invalid!"
+    | otherwise = Board { getRows = rows }
   where
     width = length (rows !! 0)
     areRowsValid = (length rows > 0)
