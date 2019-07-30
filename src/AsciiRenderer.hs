@@ -8,7 +8,7 @@ module AsciiRenderer
 import Data.List (intercalate)
 
 import Board (Board, Field(..), toList)
-import Pacman (Pacman, getDirection)
+import Pacman (Pacman(..))
 import Direction
 
 
@@ -24,7 +24,7 @@ renderField Wall = '#'
 renderField Empty = ' '
 
 renderPacman :: Pacman -> Char
-renderPacman pacman = case (getDirection pacman) of
+renderPacman pacman = case (direction pacman) of
     North -> 'v'
     East -> '<'
     South -> '^'

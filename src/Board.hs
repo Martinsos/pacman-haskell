@@ -1,6 +1,7 @@
 module Board
     ( Board
     , Field(..)
+    , Position(..)
     , getWidth
     , getHeight
     , fromList
@@ -13,6 +14,11 @@ data Board = Board
     }
 
 data Field = Food | Wall | Empty deriving (Show, Eq)
+
+data Position = Position
+    { getX :: Int
+    , getY :: Int
+    }
 
 getWidth :: Board -> Int
 getWidth board = length $ (getRows board) !! 0

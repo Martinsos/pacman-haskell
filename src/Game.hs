@@ -1,26 +1,24 @@
 module Game
-    ( Game
-    , newGame
-    , getScore
-    , numStepsElapsed
-    , isOver
+    ( Game (getScore, numStepsElapsed, isOver)
+    , makeNewGame
     ) where
 
 import Board (Board)
-import qualified Board
 import Pacman (Pacman)
 
 data Game = Game
-    { board :: Board
-    , pacman :: Pacman
+    { getBoard :: Board
+    , getPacman :: Pacman
+    , getScore :: Int
+    , numStepsElapsed :: Int
+    , isOver :: Bool
     }
 
-board1 :: Board
-board1 = Board.fromList
-    [ [Board.Food,  Board.Food,  Board.Food]
-    , [Board.Food,  Board.Empty, Board.Food]
-    , [Board.Food,  Board.Food,  Board.Food]
-    ]
-
-newGame :: Game
-newGame = Game { board = board1 }
+makeNewGame :: Board -> Pacman -> Game
+makeNewGame board pacman  = Game
+    { getBoard = board
+    , getPacman = pacman
+    , getScore = 0
+    , numStepsElapsed = 0
+    , isOver = False
+    }
