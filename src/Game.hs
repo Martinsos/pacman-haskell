@@ -1,5 +1,5 @@
 module Game
-    ( Game (getScore, numStepsElapsed, isOver)
+    ( Game (getBoard, getScore, numStepsElapsed, isOver)
     , makeNewGame
     ) where
 

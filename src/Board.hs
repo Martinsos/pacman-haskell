@@ -44,7 +44,7 @@ fromAscii rows
     width = length (rows !! 0)
 
     cells :: [(Position, Char)]
-    cells = concatMap (\(x, row) -> map (\(y, char) -> (((x, y), char))) (zip [0..] row)) (zip [0..] rows)
+    cells = concatMap (\(y, row) -> map (\(x, char) -> (((x, y), char))) (zip [0..] row)) (zip [0..] rows)
 
     pacmans :: [Pacman]
     pacmans = [p | Just p <- map (\(position, char) -> pacmanFromAscii position char) cells]
