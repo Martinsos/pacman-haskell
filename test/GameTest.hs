@@ -2,10 +2,9 @@ module GameTest where
 
 import Test.Tasty.Hspec
 
-import Board (Position(..))
+import Board (Position(..), Direction(..))
 import qualified Board
 import Pacman (Pacman(..))
-import Direction
 import Game
 
 spec_Game :: Spec

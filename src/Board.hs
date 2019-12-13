@@ -2,6 +2,8 @@ module Board
     ( Board
     , Field(..)
     , Position(..)
+    , newPosition
+    , Direction(..)
     , getWidth
     , getHeight
     , fromList
@@ -19,6 +21,11 @@ data Position = Position
     { getX :: Int
     , getY :: Int
     }
+
+newPosition :: Int -> Int -> Position
+newPosition x y = Position { getX = x, getY = y }
+
+data Direction = North | East | South | West deriving (Eq, Show, Ord)
 
 getWidth :: Board -> Int
 getWidth board = length $ (getRows board) !! 0

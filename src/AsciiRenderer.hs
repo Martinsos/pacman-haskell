@@ -3,13 +3,14 @@ module AsciiRenderer
     -- For tests only:
     , renderField
     , renderPacman
+    , renderGame
     ) where
 
 import Data.List (intercalate)
 
-import Board (Board, Field(..), toList)
+import Game (Game)
+import Board (Board, Field(..), Direction(..), toList)
 import Pacman (Pacman(..))
-import Direction
 
 
 renderBoard :: Board -> String
@@ -29,3 +30,6 @@ renderPacman pacman = case (direction pacman) of
     East -> '<'
     South -> '^'
     West -> '>'
+
+renderGame :: Game -> String
+renderGame _ = "todo"
