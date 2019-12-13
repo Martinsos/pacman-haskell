@@ -21,7 +21,7 @@ data Board = Board
 data Pacman = Pacman
     { getPacmanDirection :: Direction
     , getPacmanPosition :: Position
-    } deriving (Show)
+    } deriving (Show, Eq)
 
 data Object = Food | Wall deriving (Show, Eq)
 

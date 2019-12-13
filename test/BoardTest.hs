@@ -3,21 +3,24 @@ module BoardTest where
 import Test.Tasty.Hspec
 
 import Control.Exception (evaluate)
+import qualified Data.Map.Strict as Map
 
-import Board
+import qualified Board
 
 
 spec_Board :: Spec
 spec_Board = do
-    let fields = [ [Food, Wall]
-                 , [Food, Wall]
-                 , [Food, Empty]
-                 ]
-    let board = fromList fields
-    it "Board made with fromList has correct dimensions" $ do
-        (getWidth board, getHeight board) `shouldBe` (2, 3)
-    -- TODO: we could write property test for this.
-    it "toList should return list given to fromList." $ do
-        toList board `shouldBe` fields
-    it "fromList should throw error when rows are not of same length" $ do
-        evaluate (fromList [[Food], [Food, Wall]]) `shouldThrow` errorCall "Rows are invalid!"
+    let ascii = [ " <."
+                , " #."
+                ]
+    let board = Board.fromAscii ascii
+    it "Board made with fromAscii has correct dimensions" $ do
+        (Board.getBoardWidth board, Board.getBoardHeight board) `shouldBe` (3, 2)
+    it "getBoardObjects should return correct objects." $ do
+        (Board.getBoardObjects board) `shouldBe`
+            (Map.fromList [((0, 2), Board.Food), ((1, 2), Board.Food), ((1, 1), Board.Wall)])
+    it "getBoardPacman should return correct pacman." $ do
+        (Board.getBoardPacman board) `shouldBe`
+            (Board.Pacman { Board.getPacmanPosition = (0, 1), Board.getPacmanDirection = Board.East })
+    it "fromAscii should throw error when rows are not of same length" $ do
+        evaluate (Board.fromAscii ["<..", ".."]) `shouldThrow` errorCall "Rows are invalid!"

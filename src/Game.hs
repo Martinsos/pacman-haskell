@@ -4,20 +4,17 @@ module Game
     ) where
 
 import Board (Board)
-import Pacman (Pacman)
 
 data Game = Game
     { getBoard :: Board
-    , getPacman :: Pacman
     , getScore :: Int
     , numStepsElapsed :: Int
     , isOver :: Bool
     }
 
-makeNewGame :: Board -> Pacman -> Game
-makeNewGame board pacman  = Game
+makeNewGame :: Board -> Game
+makeNewGame board  = Game
     { getBoard = board
-    , getPacman = pacman
     , getScore = 0
     , numStepsElapsed = 0
     , isOver = False
