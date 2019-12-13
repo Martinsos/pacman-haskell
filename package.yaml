@@ -32,7 +32,8 @@ ghc-options:
 
 library:
   source-dirs: src
-  dependencies: []
+  dependencies:
+    - containers
 
 executables:
   pacman-exe:
