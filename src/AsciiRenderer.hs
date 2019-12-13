@@ -17,9 +17,9 @@ renderBoard :: Board -> [String]
 renderBoard board = [renderRow board y | y <- [0 .. (Board.getBoardHeight board) - 1]]
 
 renderRow :: Board -> Int -> String
-renderRow board y = [renderField board (x, y) | x <- [0 .. (Board.getBoardWidth board) - 1]]
+renderRow board y = concat [renderField board (x, y) | x <- [0 .. (Board.getBoardWidth board) - 1]]
 
-renderField :: Board -> Board.Position -> Char
+renderField :: Board -> Board.Position -> String
 renderField board fieldPosition
     | isJust pacmanOnTheField = renderPacman $ fromJust pacmanOnTheField
     | isJust objectOnTheField = renderObject $ fromJust objectOnTheField
@@ -31,21 +31,24 @@ renderField board fieldPosition
     objectOnTheField :: Maybe Board.Object
     objectOnTheField = Map.lookup fieldPosition (Board.getBoardObjects board)
 
-renderPacman :: Board.Pacman -> Char
+-- NOTE: We render single fields with 3 horizontally consecutive 3, in order to compensate for
+--   vertical elongation that is present in most terminals. That is why we print " < " instead of "<".
+
+renderPacman :: Board.Pacman -> String
 renderPacman pacman
-    | direction == Board.North = 'v'
-    | direction == Board.East = '<'
-    | direction == Board.West = '>'
-    | direction == Board.South = '^'
+    | direction == Board.North = " v "
+    | direction == Board.East = " < "
+    | direction == Board.West = " > "
+    | direction == Board.South = " ^ "
     | otherwise = error "Pacman is invalid for rendering"
   where direction = Board.getPacmanDirection pacman
 
-renderObject :: Board.Object -> Char
-renderObject Board.Food = '·'
-renderObject Board.Wall = '█'
+renderObject :: Board.Object -> String
+renderObject Board.Food = " · "
+renderObject Board.Wall = "███"
 
-renderEmptyField :: Char
-renderEmptyField = ' '
+renderEmptyField :: String
+renderEmptyField = "   "
 
 renderGame :: Game -> [String]
 renderGame game =

@@ -13,9 +13,9 @@ spec_AsciiRenderer = do
                            , ".# .#"
                            , "..^.."
                            ]
-    let simpleBoardAsciiRendering = [ "   ·█"
-                                    , "·█ ·█"
-                                    , "··^··"
+    let simpleBoardAsciiRendering = [ "          · ███"
+                                    , " · ███    · ███"
+                                    , " ·  ·  ^  ·  · "
                                     ]
     describe "renderBoard" $ do
         it "Correctly renders small board" $ do
