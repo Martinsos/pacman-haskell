@@ -1,7 +1,7 @@
 module AsciiRenderer
-    ( renderBoard
-    , renderGame
+    ( renderGame
     -- For tests only:
+    , renderBoard
     ) where
 
 import Data.Maybe

@@ -25,7 +25,7 @@ data Pacman = Pacman
 
 data Object = Food | Wall deriving (Show, Eq)
 
-type Position = (Int, Int) -- (x, y) where top left corner of board is (0, 0) and bottom right is (width, height).
+type Position = (Int, Int) -- (x, y) where top left corner of board is (0, 0) and bottom right is (width - 1, height - 1).
 
 data Direction = North | East | South | West deriving (Eq, Show, Ord)
 

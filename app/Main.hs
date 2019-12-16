@@ -18,9 +18,9 @@ main = do
       let rows = AsciiRenderer.renderGame game
       sequence_ $ map putStrLn rows
     executeGame game = do
-        let game' = Engine.nextStep game
-        printGame game'
+        printGame game
         threadDelay 1000000
+        let game' = Engine.nextStep game
         executeGame game'
     clearScreen = putStr "\ESC[2J"
 

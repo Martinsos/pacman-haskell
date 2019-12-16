@@ -13,7 +13,7 @@ data Game = Game
     } deriving (Show, Eq)
 
 makeNewGame :: Board -> Game
-makeNewGame board  = Game
+makeNewGame board = Game
     { getBoard = board
     , getScore = 0
     , numStepsElapsed = 0

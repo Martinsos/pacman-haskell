@@ -33,7 +33,7 @@ spec_Engine = do
             Game.getScore game' `shouldBe` (Game.getScore game) + Engine.foodPoints
 
         it "should remove food when pacman eats it" $ do
-            False
+            pending
 
         it "should not move pacman if it hits the wall" $ do
             let game' = Engine.movePacman $ Game.makeNewGame $ Board.fromAscii [ "#> " ]
