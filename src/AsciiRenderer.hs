@@ -53,6 +53,7 @@ renderEmptyField = "   "
 renderGame :: Game -> [String]
 renderGame game =
     [ "Score: " ++ show (Game.getScore game)
+    , "Time: " ++ show (Game.numStepsElapsed game)
     , ""
     ] ++ (map (leftBoardPadding ++) $ renderBoard $ Game.getBoard game)
   where

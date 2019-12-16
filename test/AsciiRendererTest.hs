@@ -28,5 +28,6 @@ spec_AsciiRenderer = do
             let game = Game.makeNewGame simpleBoard
             (renderGame game) `shouldBe`
                 [ "Score: " ++ show (Game.getScore game)
+                , "Time: " ++ show (Game.numStepsElapsed game)
                 , ""
                 ] ++ (map ("    " ++) simpleBoardAsciiRendering)
