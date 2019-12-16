@@ -7,6 +7,9 @@ Install stack.
 ## Development
 `stack build`
 `stack test`
+
+## Running
 `stack run`
+
 
 Update package.yaml if needed.

@@ -16,7 +16,7 @@ data Board = Board
     , getBoardHeight :: Int
     , getBoardPacman :: Pacman
     , getBoardObjects :: Map Position Object
-    } deriving (Show)
+    } deriving (Show, Eq)
 
 data Pacman = Pacman
     { getPacmanDirection :: Direction

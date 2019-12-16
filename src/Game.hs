@@ -10,7 +10,7 @@ data Game = Game
     , getScore :: Int
     , numStepsElapsed :: Int
     , isOver :: Bool
-    }
+    } deriving (Show, Eq)
 
 makeNewGame :: Board -> Game
 makeNewGame board  = Game
